@@ -1,0 +1,33 @@
+<div class="header">
+  <div class="container">
+    <img src="http://s3.amazonaws.com/codecademy-content/courses/learn-rails/img/logo-1m.svg">
+    <h1>Messenger</h1>
+  </div>
+</div>
+
+<div class="users">
+  <div class="container">
+
+      <h2 class="username">Edit this post:</h2>
+      <div class="destination">
+        <%= form_for @user, url: {action: "update"}, html:{class:"nifty_form"} do |f| %>
+            <div class="field">
+              <%= f.label :username %><br>
+              <%= f.text_field :username %>
+            </div>
+            <div class="actions">
+              <%= f.submit "Update User's Info" %>
+            </div>
+        <% end %>
+        </div>
+
+
+    <div class="cards row">
+
+      <%= link_to 'Create a New User', "users/new"%>
+      <%= link_to 'Create a New Post', "messages/new"%>
+
+    </div>
+
+  </div>
+</div>
