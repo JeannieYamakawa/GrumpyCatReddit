@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
 	def update
 		@message = Message.find(params[:id])
 		if @message.update_attributes(message_params)
-			redirect_to(:action => 'show', :id => @message.id)
+			redirect_to '/messages'
 		else
 			render 'edit'
 		end
@@ -38,6 +38,7 @@ class MessagesController < ApplicationController
 
 	private
   	def message_params
-    	params.require(:message).permit(:content)
+    	params.require(:message).permit(:content, :website)
+		# params.require(:user).permit(:username)
   	end
 end
