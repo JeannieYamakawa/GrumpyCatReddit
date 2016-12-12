@@ -11,15 +11,16 @@
       <h2 class="username">Here are all posts by: <%= @user.username %></h2>
 
     <div class="cards row">
-      <% @messages.each do |message| %>
-      <div class="card col-xs-4">
-        <h2><%= message.content %></h2>
-        <div><%= link_to message.website, "http://#{message.website}" %></div>
-      <% end %>
-      <%= link_to 'Create a New User', "users/new"%>
-      <%= link_to 'Create a New Post', "messages/new"%>
+          <% @messages.each do |message| %>
+          <div class="card col-xs-4">
+            <h2><%= message.content %></h2>
+            <div><%= link_to message.website, "http://#{message.website}" %></div>
+              <% end %>
+              <%= link_to 'Create a New User', new_user_path%>
+              <%= link_to 'Create a New Post', new_user_message_path(@user) %>
+              <%= link_to 'Edit Your User Info', edit_user_path(@user.id)%>
 
-    </div>
+            </div>
 
   </div>
 </div>
