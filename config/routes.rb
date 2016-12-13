@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     end
     get "messages" => 'messages#index'
     get "messages/:id" => 'messages#edit'
+    get "messages/:id/delete" => 'messages#destroy'
 end

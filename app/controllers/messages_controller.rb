@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
 	end
 
 	def show
-        @message = Messages.find(params[:id])
+        @message = Message.find(params[:id])
 	end
 
 	def new
@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:user_id])
+		@user = User.find(params[:id])
         @message = Message.find(params[:id])
 	end
 
@@ -36,9 +36,13 @@ class MessagesController < ApplicationController
         end
     end
 
+	def destroy
+		puts @message = Message.find(params[:id])
+
+	end
+
 	private
   	def message_params
-    	params.require(:message).permit(:content, :website)
-		# params.require(:user).permit(:username)
+    	params.require(:message).permit([:user_id, :content, :website])
   	end
 end

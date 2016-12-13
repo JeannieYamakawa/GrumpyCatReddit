@@ -1,0 +1,22 @@
+
+<div class="header">
+  <div class="container">
+    <img src="http://s3.amazonaws.com/codecademy-content/courses/learn-rails/img/logo-1m.svg">
+    <h1>Messenger</h1>
+  </div>
+</div>
+
+<div class="users">
+  <div class="container">
+
+      <h2 class="username">Here are all posts by: <%= @user.username %></h2>
+
+            <h2><%= @message.content %></h2>
+            <div><%= link_to @message.website, "http://#{@message.website}" %></div>
+              <% end %>
+              <%= link_to 'Create a New User', new_user_path%>
+
+            </div>
+
+  </div>
+</div>
