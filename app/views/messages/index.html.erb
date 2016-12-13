@@ -9,13 +9,13 @@
   <div class="container">
    <% @messages.each do |message| %>
     <div class="message">
-        <%=link_to "Edit Post", edit_user_message_path(message.user_id,message.id) %>
-        <%=link_to "Delete Post", user_message_path(id: message.id, user_id: message.user_id),method: :delete  %>
+        <%=link_to "Edit Post", message_path(id: message.id, user_id: 1),data: { confirm: "Are you sure?" },method: :patch  %>
+        <%=link_to "Delete Post", message_path(id: message.id, user_id: 1),data: { confirm: "Are you sure?" },method: :delete  %>
       <p class="content"><%= message.content %></p>
       <p class="time"><%= message.created_at %></p>
     </div>
 
 	<% end %>
-    <%= link_to 'New Message', "new_message_path"%>
+    <%= link_to 'New Message', new_message_path %>
   </div>
 </div>
