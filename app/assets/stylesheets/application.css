@@ -21,6 +21,9 @@
 
 
 /* General */
+.alert{
+    font-size: 20
+}
 
 html, body {
     height: 100%;

@@ -14,7 +14,12 @@ class MessagesController < ApplicationController
 
 	def edit
 		@user = User.find(params[:user_id])
-        @message = Message.find(params[:id])
+		if Message.find(params[:id]).user_id === current_user.id
+			@message = Message.find(params[:id])
+		else
+			flash[:alert] = "You cannot delete another user's post"
+			redirect_to '/messages'
+		end
 	end
 
 
