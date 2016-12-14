@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-    # get 'welcome' => 'pages#home'
+    root 'messages#index'
     resources :users do
         resources :messages do
             resources :comments
