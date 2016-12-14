@@ -15,7 +15,9 @@
       <h4><p class="website"><%= link_to message.website, "http://#{message.website}" %></p></h4>
       <%=link_to "Edit Post",  edit_user_message_path(id: message.id, user_id: current_user || message.user_id, content: message.content, website: message.website) %>
       <%=link_to "Delete Post", message_path(id: message.id, user_id: current_user),data: { confirm: "Are you sure?" },method: :delete  %>
-      <p class="time"><%= message.created_at %></p>
+      <p class="time">
+  <%= message.created_at.try(:strftime,'%m/%d/%Y') %>
+</p>
     </div>
 
 	<% end %>
