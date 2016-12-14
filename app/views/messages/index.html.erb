@@ -9,14 +9,29 @@
   <div class="container">
    <% @messages.each do |message| %>
     <div class="message">
-        <%=link_to "Edit Post", message_path(id: message.id, user_id: 1),data: { confirm: "Are you sure?" },method: :patch  %>
-        <%=link_to "Delete Post", message_path(id: message.id, user_id: 1),data: { confirm: "Are you sure?" },method: :delete  %>
-      <p class="content"><%= message.content %></p>
-      <p class="website"><%= link_to message.website, "http://#{message.website}" %></p>
+
+      <h1><p class="content"><%= message.content %></p></h1>
+      <h2><p class="content">Post written by: <%= message.user.username %></p></h2>
+      <h4><p class="website"><%= link_to message.website, "http://#{message.website}" %></p></h4>
+      <%=link_to "Edit Post",  edit_user_message_path(id: message.id, user_id: current_user || message.user_id, content: message.content, website: message.website) %>
+      <%=link_to "Delete Post", message_path(id: message.id, user_id: current_user),data: { confirm: "Are you sure?" },method: :delete  %>
       <p class="time"><%= message.created_at %></p>
     </div>
 
 	<% end %>
-    <%= link_to 'New Message', new_message_path %>
+    <%= link_to 'New Post', new_message_path %>
+    <!-- <%= link_to 'Sign Up', new_user_registration_path %>
+    <%= link_to 'Sign In', new_user_session_path %>
+    <%= link_to('Logout', destroy_user_session_path) %> -->
+
+
+
+    <% if current_user.present? %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+            <% else %>
+             <%= link_to "Log in", new_user_session_path %>
+             <%= link_to "Sign up", new_user_registration_path %>
+    <% end %>
+
   </div>
 </div>
