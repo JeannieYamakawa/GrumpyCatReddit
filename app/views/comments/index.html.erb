@@ -1,1 +1,26 @@
-booyah
+<div class="header">
+  <div class="container">
+    <img src="http://s3.amazonaws.com/codecademy-content/courses/learn-rails/img/logo-1m.svg">
+    <h1>Messenger</h1>
+  </div>
+</div>
+
+<div class="messages">
+  <div class="container">
+      <h2><%=@messageToView.content%></h2>
+      <h3><%=@messageToView.website%></h3>
+      <h3>Posted by: <%= @userWhoPosted.username%></h3>
+
+
+
+    <h1>comments on this post:</h1>
+       <% @comments.each do |comment| %>
+           <%= comment.content %>
+       <% end %>
+       <% if current_user.present? %>
+           <div><%=link_to "Comment on Post", new_user_message_comment_path(message_id: @messageToView.id, user_id: current_user)  %></div>
+       <% end %>
+
+
+  </div>
+</div>

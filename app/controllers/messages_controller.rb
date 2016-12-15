@@ -2,7 +2,11 @@ class MessagesController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 	def index
 		@messages = Message.all
+		# @messageComments = Comment.where(:message_id => id)
 	end
+
+
+
 
 	def show
         @message = Message.find(params[:id])

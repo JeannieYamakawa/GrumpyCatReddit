@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
     	before_action :authenticate_user!, except: [:index, :show]
     	def index
-    		@comments = Comment.all
+    		@comments = Comment.where(message_id: params[:message_id])
+            @messageToView = Message.find(params[:message_id])
+            @userWhoPosted = User.find(@messageToView.user_id)
     	end
 
     	def show
