@@ -10,6 +10,7 @@ class UsersController < ApplicationController
         @user = current_user.build(user_params)
             p "*" *80
             p user_params
+                p "*" *30
             if @user.save
                 redirect_to messages_path
             else
@@ -21,6 +22,9 @@ class UsersController < ApplicationController
 
 
     def show
+        p "*" *80
+        puts @user.username
+
         @user = User.find(params[:id])
         @messages = @user.messages
     end
@@ -41,9 +45,27 @@ class UsersController < ApplicationController
     end
 
 
+
+    	def destroy
+            p "*" *80
+            puts User.find(params[:id]).id
+            puts User.find(params[:id]).username
+            puts current_user.id
+    		if User.find(params[:id]).id === current_user.id
+    		@user = User.find(params[:id]).destroy
+    		flash[:success] = "User successfully deleted"
+        	redirect_to '/messages'
+    		else
+    			flash[:alert] = "You cannot delete another user's account"
+    			redirect_to users_path
+    		end
+    	else
+    	end
+
     private
     def user_params
         params.require(:user).permit(:username)
+
     end
 
 

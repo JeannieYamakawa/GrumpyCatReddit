@@ -9,12 +9,24 @@
 <div class="users">
   <div class="container">
 
-      <h2 class="username">Here are all posts by: <%= @user.username %></h2>
+      <h2 class="username">Here are all posts by:
 
-            <h2><%= @message.content %></h2>
-            <div><%= link_to @message.website, "http://#{@message.website}" %></div>
-              <%= link_to 'Create a New User', new_user_path%>
-            </div>
+        <h2><%=@user.username%></h2>
+
+          <% @messages.each do |message| %>
+           <div class="message">
+
+             <h1><p class="content"><%= message.content %></p></h1>
+             <h4><p class="website"><%= link_to message.website, "http://#{message.website}" %></p></h4>
+             <!-- <%=link_to "Edit Post",  edit_user_message_path(id: message.id, user_id: current_user || message.user_id, content: message.content, website: message.website) %>
+             <%=link_to "Delete Post", message_path(id: message.id, user_id: current_user),data: { confirm: "Are you sure?" },method: :delete  %> -->
+             <p class="time">
+         <%= message.created_at.try(:strftime,'%m/%d/%Y') %>
+        </p>
+           </div>
+           <%end%>
+
+
 
   </div>
 </div>

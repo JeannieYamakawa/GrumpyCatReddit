@@ -3,8 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-    has_many :messages, class_name: 'Message'
-    has_many :comments
+    has_many :messages,  :dependent => :delete_all
+    has_many :comments,  :through => :messages, :dependent => :delete_all
+
 
     def email_required?
         false
