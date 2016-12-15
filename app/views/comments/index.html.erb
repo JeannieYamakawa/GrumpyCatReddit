@@ -7,15 +7,26 @@
 
 <div class="messages">
   <div class="container">
-      <h2><%=@messageToView.content%></h2>
-      <h3><%=@messageToView.website%></h3>
+      <h1><%=@messageToView.content%></h1>
+      <h2><%=@messageToView.website%></h2>
       <h3>Posted by: <%= @userWhoPosted.username%></h3>
 
 
 
     <h1>comments on this post:</h1>
        <% @comments.each do |comment| %>
-           <%= comment.content %>
+           <h2><div><%= comment.content %></div></h2>
+           <%if comment.user_id == current_user.id%>
+
+
+                 <%=link_to "Edit Comment",  edit_user_message_comment_path(id: comment.id, user_id: current_user || @messageToView.user_id, content: comment.content) %>
+
+                 <%=link_to "Delete Comment", user_message_comment_path(id: comment.id, message_id:@messageToView.id, user_id: current_user),data: { confirm: "Are you sure you want to delete your comment?" },method: :delete  %>
+           <%end%>
+
+
+
+
        <% end %>
        <% if current_user.present? %>
            <div><%=link_to "Comment on Post", new_user_message_comment_path(message_id: @messageToView.id, user_id: current_user)  %></div>

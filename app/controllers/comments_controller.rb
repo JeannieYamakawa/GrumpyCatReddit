@@ -52,7 +52,7 @@ class CommentsController < ApplicationController
 
     			p @comment
     	        if @comment.save
-    	            redirect_to messages_path
+    	            redirect_to user_message_comments_path
     	        else
     	            render 'new'
     	        end
