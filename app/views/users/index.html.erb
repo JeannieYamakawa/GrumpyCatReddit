@@ -1,0 +1,31 @@
+<div class="header">
+  <div class="container">
+    <img src="http://s3.amazonaws.com/codecademy-content/courses/learn-rails/img/logo-1m.svg">
+    <h1>Messenger</h1>
+  </div>
+</div>
+
+<div class="messages">
+  <div class="container">
+   <% @users.each do |user| %>
+    <div class="message">
+
+
+      <h2><p class="content">Username: <%= user.username %></p></h2>
+      <%=link_to "Edit User",  edit_user_path(id: user.id) %>
+      <%=link_to "Delete User", user_path(id: user.id),data: { confirm: "Are you sure?" },method: :delete  %>
+    </div>
+
+	<% end %>
+
+
+
+    <% if current_user.present? %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+            <% else %>
+             <%= link_to "Log in", new_user_session_path %>
+             <%= link_to "Sign up", new_user_registration_path %>
+    <% end %>
+
+  </div>
+</div>
