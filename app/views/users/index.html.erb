@@ -11,9 +11,17 @@
     <div class="message">
 
 
-      <h2><p class="content">Username: <%= user.username %></p></h2>
+      <h2><p class="content"> <%= user.username %> <%= "view posts" redirect_to(:action => 'show', :id => user.id)
+%> </p></h2>
+
+
+
+
+
+      <%if current_user.id == user.id %>
       <%=link_to "Edit User",  edit_user_path(id: user.id) %>
       <%=link_to "Delete User", user_path(id: user.id),data: { confirm: "Are you sure?" },method: :delete  %>
+      <%end%>
     </div>
 
 	<% end %>
