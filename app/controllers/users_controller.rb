@@ -8,21 +8,16 @@ class UsersController < ApplicationController
 
     def create
         @user = current_user.build(user_params)
-            p "*" *80
-            p user_params
-                p "*" *30
             if @user.save
                 redirect_to messages_path
             else
-                # render 'new'
-                puts 'This isnt working'
-                p "*" *80
+                render 'new'
             end
     end
 
 
     def show
-        @user = User.find(params[:id]) 
+        @user = User.find(params[:id])
         @messages = @user.messages
     end
 
@@ -50,10 +45,7 @@ class UsersController < ApplicationController
 
 
     	def destroy
-            p "*" *80
-            puts User.find(params[:id]).id
-            puts User.find(params[:id]).username
-            puts current_user.id
+            
     		if User.find(params[:id]).id === current_user.id
     		@user = User.find(params[:id]).destroy
     		flash[:success] = "User successfully deleted"
