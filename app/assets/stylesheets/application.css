@@ -21,7 +21,7 @@
 
 
 /* General */
-
+/*http://s3.amazonaws.com/codecademy-content/courses/learn-rails/img/logo-1m.svg*/
 
 html, body {
     height: 100%;
@@ -69,7 +69,7 @@ html, body {
     font-family: 'Roboto', sans-serif;
 }
 .header {
-    background-color: #00217f;
+    background-color: thistle;
     height: 140px;
     text-align: center;
 }
@@ -891,4 +891,10 @@ h2 a {
 ul{
     list-style-type: none;
 
+}
+input{
+    border-radius: 10px;
+    height: 6vh;
+    width: 15vw;
+    padding: 1vw;;
 }

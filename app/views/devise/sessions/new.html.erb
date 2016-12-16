@@ -1,6 +1,6 @@
 <div class="header">
   <div class="container">
-    <img src="http://s3.amazonaws.com/codecademy-content/courses/learn-rails/img/logo-1m.svg">
+    <%= image_tag("grumpy.png", :alt => "grumpy cat") %>
     <h1>Messenger</h1>
   </div>
 </div>
@@ -9,7 +9,7 @@
   <div class="container">
       <%= render "devise/shared/links" %>
 
-<h2>Log in</h2>
+<h1>Log in</h1>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -17,6 +17,8 @@
     <%= f.text_field :username, autofocus: true %>
   </div>
 
+<br>
+<br>
   <div class="field">
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "off" %>
@@ -24,10 +26,12 @@
 
   <% if devise_mapping.rememberable? -%>
     <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <!-- <%= f.check_box :remember_me %> -->
+      <!-- <%= f.label :remember_me %> -->
     </div>
   <% end -%>
+  <br>
+  <br>
 
   <div class="actions">
     <%= f.submit "Log in" %>

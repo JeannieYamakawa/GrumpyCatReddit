@@ -1,6 +1,6 @@
 <div class="header">
   <div class="container">
-    <img src="http://s3.amazonaws.com/codecademy-content/courses/learn-rails/img/logo-1m.svg">
+    <%= image_tag("grumpy.png", :alt => "grumpy cat") %>
     <h1>Messenger</h1>
   </div>
 </div>
@@ -11,7 +11,7 @@
       <%= render "devise/shared/links" %>
 <br>
 <br>
-<h2>Sign up</h2>
+<h1>Sign up</h1>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -21,19 +21,26 @@
     <%= f.text_field :username, autofocus: true %>
   </div>
 <br>
+<br>
+
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
+    <br>
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
+  <br>
 
+<br>
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 <br>
+<br>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

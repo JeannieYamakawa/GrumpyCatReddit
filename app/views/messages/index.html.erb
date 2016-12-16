@@ -1,6 +1,6 @@
 <div class="header">
   <div class="container">
-    <img src="http://s3.amazonaws.com/codecademy-content/courses/learn-rails/img/logo-1m.svg">
+    <%= image_tag("grumpy.png", :alt => "grumpy cat") %>
     <h1>Messenger</h1>
   </div>
 </div>
@@ -13,10 +13,10 @@
       <h1><p class="content">Title of post: <%= message.content %></p></h1>
       <h2><p class="content">Post written by: <%= message.user.username %></p></h2>
       <p>Click to visit link:</p>
-      <h4><p class="website"><%= link_to message.website, "http://#{message.website}" %></p></h4>
+      <h4><p class="website"><%= link_to message.website, "http://#{message.website}", :style=>'color: rebeccapurple; background-color: white; border-radius: 15px'%></p></h4>
 
 
-      <% if current_user.id  == message.user_id %>
+      <% if current_user.present? && current_user.id  == message.user_id %>
       <%=link_to "Edit Post",  edit_user_message_path(id: message.id, user_id: current_user || message.user_id, content: message.content, website: message.website) %>
 
       <%=link_to "Delete Post", message_path(id: message.id, user_id: current_user),data: { confirm: "Are you sure?" },method: :delete  %>
@@ -25,12 +25,13 @@
 
       <% if current_user.present? %>
           <%=link_to "Comment on Post", new_user_message_comment_path(message_id: message.id, user_id: current_user)  %>
+          <%=link_to "View Comments" , user_message_comments_path(message_id: message.id, user_id: current_user) %>
+
       <% end %>
 
 
 
 
-      <%=link_to "View Comments" , user_message_comments_path(message_id: message.id, user_id: current_user)%>
 
 
 
