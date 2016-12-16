@@ -896,5 +896,14 @@ input{
     border-radius: 10px;
     height: 6vh;
     width: 15vw;
-    padding: 1vw;;
+    /*padding: 1vw;;*/
+}
+.flextry{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap
+}
+.spacing{
+    display: flex;
+    justify-content: space-around;
 }

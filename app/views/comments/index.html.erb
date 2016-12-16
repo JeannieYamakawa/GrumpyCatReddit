@@ -7,15 +7,23 @@
 
 <div class="messages">
   <div class="container">
+
       <h1><%=@messageToView.content%></h1>
       <h2><%=@messageToView.website%></h2>
       <h3>Posted by: <%= @userWhoPosted.username%></h3>
 
 
 
-    <h1>comments on this post:</h1>
+          <% if current_user.present? %>
+               <span ><%=link_to "Comment on Post", new_user_message_comment_path(message_id: @messageToView.id, user_id: current_user)  %></span>
+           <% end %>
+
+
        <% @comments.each do |comment| %>
-           <h2><div><%= comment.content %></div></h2>
+          <div class='flextry'>
+              <h2><div><%= comment.content %></div></h2>
+           <h3>Comment by: <%= comment.user.username %></h3>
+           </div>
            <%if comment.user_id == current_user.id%>
 
 
@@ -28,9 +36,7 @@
 
 
        <% end %>
-       <% if current_user.present? %>
-           <div><%=link_to "Comment on Post", new_user_message_comment_path(message_id: @messageToView.id, user_id: current_user)  %></div>
-       <% end %>
+       <h4><p class="website"><%=link_to "Home", user_messages_path, :style=>'color: rebeccapurple; background-color: white; border-radius: 15px'%></p></h4>
 
 
   </div>
