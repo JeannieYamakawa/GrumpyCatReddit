@@ -928,3 +928,7 @@ h1{
     flex-direction: column;
     align-items: center;
 }
+img{
+    max-height: 80vh;
+    max-width: 30vw;
+}

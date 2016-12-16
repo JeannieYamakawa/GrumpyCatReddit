@@ -8,5 +8,6 @@ Rails.application.routes.draw do
             resources :comments
         end
     end
+    get '/users/:user_id/usermessages', to: 'messages#byUser', as: 'single_user_messages'
 
 end

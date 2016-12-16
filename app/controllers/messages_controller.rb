@@ -5,8 +5,12 @@ class MessagesController < ApplicationController
 		# @messageComments = Comment.where(:message_id => id)
 	end
 
+	def byUser
+		@user = User.find(params[:user_id])
 
-
+	  @messages = Message.where(user_id: params[:user_id])
+	  render :singleshow
+	end
 
 	def show
         @message = Message.find(params[:id])

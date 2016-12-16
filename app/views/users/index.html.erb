@@ -27,7 +27,7 @@
    <div class="message flexcenter needswrap">
     <div class='needswrap'>
      <h2><p class="content"> <%= user.username %>  </p></h2>
-    <%= link_to "view posts", user_messages_path(user.id)%>
+    <%= link_to "View Posts", single_user_messages_path(user.id), url: {action: "byUser"},method: :get %>
 
 
       <%if current_user.id == user.id %>

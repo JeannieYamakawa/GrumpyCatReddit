@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
+        puts @user
         @messages = @user.messages
     end
 
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
 
 
     	def destroy
-            
+
     		if User.find(params[:id]).id === current_user.id
     		@user = User.find(params[:id]).destroy
     		flash[:success] = "User successfully deleted"
