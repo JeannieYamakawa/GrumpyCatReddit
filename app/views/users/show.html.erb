@@ -6,32 +6,43 @@
   </div>
 </div>
 
-<div class="users">
+<div class="messages">
   <div class="container">
       <% if current_user.present? %>
+              <%= link_to "Home", messages_path %>
                 <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
                 <%= link_to 'New Post', new_message_path %>
                  <%= link_to 'View All Users', users_path %>
 
               <% else %>
+              <%= link_to "Home", messages_path %>
                <%= link_to "Log in", new_user_session_path %>
                <%= link_to "Sign up", new_user_registration_path %>
       <% end %>
+  </div>
+  <br>
+  <br><br>
+  <br>
+  <div class="container needswrap">
 
       <h2 class="username">Here are all posts by:
 
-        <h2><%=@user.username%></h2>
+        <%=@user.username%></h2>
 
           <% @messages.each do |message| %>
-           <div class="message">
+           <div class="message flexcenter needswrap">
+               <div class='needswrap'>
 
              <h1><p class="content"><%= message.content %></p></h1>
+             <img src= <%= message.picture%> alt="">
+
              <h4><p class="website"><%= link_to message.website, "http://#{message.website}" %></p></h4>
              <!-- <%=link_to "Edit Post",  edit_user_message_path(id: message.id, user_id: current_user || message.user_id, content: message.content, website: message.website) %>
              <%=link_to "Delete Post", message_path(id: message.id, user_id: current_user),data: { confirm: "Are you sure?" },method: :delete  %> -->
              <p class="time">
          <%= message.created_at.try(:strftime,'%m/%d/%Y') %>
         </p>
+           </div>
            </div>
            <%end%>
 

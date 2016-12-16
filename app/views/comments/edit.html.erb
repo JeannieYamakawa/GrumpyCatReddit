@@ -8,14 +8,21 @@
 <div class="users">
   <div class="container">
       <% if current_user.present? %>
+       <%= link_to "Home", messages_path %>
                 <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
                 <%= link_to 'New Post', new_message_path %>
                  <%= link_to 'View All Users', users_path %>
 
               <% else %>
+               <%= link_to "Home", messages_path %>
                <%= link_to "Log in", new_user_session_path %>
                <%= link_to "Sign up", new_user_registration_path %>
       <% end %>
+  </div>
+  <br>
+  <br><br>
+  <br>
+  <div class="container">
 
       <h2 class="message">Edit this comment:</h2>
       <div class="destination">

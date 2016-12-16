@@ -38,6 +38,8 @@ body {
     width: 960px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    /*flex-direction: column;*/
 }
 
 /* Main */
@@ -165,7 +167,7 @@ h2 a {
     font-family: 'Roboto', sans-serif;
     margin: 10px 0;
     padding: 20px;
-    width: calc(100% - 40px);
+    /*width: calc(100% - 40px);*/
 }
 .destination form input:focus {
     border: 1px solid #003ec9;
@@ -916,4 +918,13 @@ input{
 .flexcenter{
     /*border: 1px solid red;*/
     display: inline;
+}
+h1{
+    /*color: rebeccapurple;
+    float:center;*/
+}
+.needswrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
