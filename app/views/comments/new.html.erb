@@ -6,6 +6,15 @@
 </div>
 <div class="comments">
   <div class="container">
+      <% if current_user.present? %>
+                <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+                <%= link_to 'New Post', new_message_path %>
+                 <%= link_to 'View All Users', users_path %>
+
+              <% else %>
+               <%= link_to "Log in", new_user_session_path %>
+               <%= link_to "Sign up", new_user_registration_path %>
+      <% end %>
       <br>
       <br>
     <%= form_for :comment, url: user_message_comments_path(user_id: current_user.id), method: 'post' do |f| %>
@@ -18,7 +27,7 @@
       </div>
     <% end %>
 
-     <h4><p class="website"><%=link_to "Home", user_messages_path, :style=>'color: rebeccapurple; background-color: white; border-radius: 15px'%></p></h4>
+     <h4><p class="website"><%=link_to "Home", user_messages_path, :style=>'text-shadow: 0px 0px 1px 1px #ccc;color: rebeccapurple; background-color: white; border-radius: 15px'%></p></h4>
 
 </div>
 </div>

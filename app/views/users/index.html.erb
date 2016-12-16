@@ -7,15 +7,22 @@
 
 <div class="messages">
   <div class="container">
+      <% if current_user.present? %>
+                <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+                <%= link_to 'New Post', new_message_path %>
+                 <%= link_to 'View All Users', users_path %>
+
+              <% else %>
+               <%= link_to "Log in", new_user_session_path %>
+               <%= link_to "Sign up", new_user_registration_path %>
+      <% end %>
    <% @users.each do |user| %>
     <div class="message">
 
-
-      <h2><p class="content"> <%= user.username %> <%= "view posts" redirect_to(:action => 'show', :id => user.id)
-%> </p></h2>
-
-
-
+        <div class='nextTo'>
+              <h2><p class="content"> <%= user.username %>  </p></h2>
+              <%= link_to "view posts", user_messages_path(user.id)%>
+        </div>
 
 
       <%if current_user.id == user.id %>

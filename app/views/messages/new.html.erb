@@ -6,11 +6,29 @@
 </div>
 <div class="messages">
   <div class="container">
+      <% if current_user.present? %>
+                <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+                <%= link_to 'New Post', new_message_path %>
+                 <%= link_to 'View All Users', users_path %>
+
+              <% else %>
+               <%= link_to "Log in", new_user_session_path %>
+               <%= link_to "Sign up", new_user_registration_path %>
+      <% end %>
+      <br>
+      <br><br>
+      <br>
 <%= form_for(@message) do |f| %>
   <div class="field">
     <%= f.label :post %><br>
     <%= f.text_area :content %>
   </div>
+  <br><br>
+  <div class="field">
+    <%= f.label :picture %><br>
+    <%= f.text_area :picture %>
+  </div>
+  <br><br>
   <div class="field">
     <%= f.label :website %><br>
     <%= f.text_area :website %>

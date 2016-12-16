@@ -36,6 +36,8 @@ body {
 .container {
     margin: 0 auto;
     width: 960px;
+    display: flex;
+    justify-content: center;
 }
 
 /* Main */
@@ -72,9 +74,14 @@ html, body {
     background-color: thistle;
     height: 140px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .header img {
     margin: 8px 0 0 0;
+    height: 100px;
+    width: auto;
 }
 .header h1 {
     color: #fff;
@@ -88,7 +95,7 @@ h2 a {
     text-decoration: none;
 }
 .container h2 {
-    color: #00217f;
+    color: rebeccapurple;
 }
 .card {
     color: #fff;
@@ -901,4 +908,12 @@ input{
 .spacing{
     display: flex;
     justify-content: space-around;
+}
+.nextTo{
+    display: flex;
+    justify-content: space-between;;
+}
+.flexcenter{
+    /*border: 1px solid red;*/
+    display: inline;
 }
