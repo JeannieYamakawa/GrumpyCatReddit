@@ -929,6 +929,10 @@ h1{
     align-items: center;
 }
 img{
-    max-height: 80vh;
-    max-width: 30vw;
+    width: auto;
+    max-width: 40vw;
+    height: auto;
+    max-height: 70vh;
+
+
 }
