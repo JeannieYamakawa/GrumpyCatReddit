@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     			@comment = Comment.find(params[:id])
     		else
     			flash[:alert] = "You cannot delete another user's comment"
-    			redirect_to '/messages'
+    			redirect_to user_message_comments_path
     		end
     	end
 
@@ -33,8 +33,8 @@ class CommentsController < ApplicationController
     		@comment = Comment.find(params[:id])
     		p current_user, "*currentUser" *10
     		p comment_params
-    		if @comment.update_attributes(comment_params[:text])
-    			redirect_to '/messages'
+    		if @comment.update_attributes(comment_params)
+    			redirect_to user_message_comments_path
     		else
     			# p "?" *80
     			render 'edit'
@@ -62,7 +62,7 @@ class CommentsController < ApplicationController
     		if Comment.find(params[:id]).user_id === current_user.id
     		@comment = Comment.find(params[:id]).destroy
     		flash[:success] = "Comment deleted"
-        	redirect_to '/messages'
+        	redirect_to user_message_comments_path
     		else
     			flash[:alert] = "You cannot delete another user's comment"
     			redirect_to '/messages'

@@ -22,9 +22,6 @@ class UsersController < ApplicationController
 
 
     def show
-        p "*" *80
-        puts @user.username
-
         @user = User.find(params[:id])
         @messages = @user.messages
     end
@@ -37,10 +34,16 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        if @user.update_attributes(user_params)
-            redirect_to(:action => 'show', :id => @user.id)
+        if
+            @user.id === current_user.id
+            if @user.update_attributes(user_params)
+                redirect_to(:action => 'show', :id => @user.id)
+            else
+                render 'edit'
+            end
         else
-            render 'edit'
+            flash[:alert] = "You cannot update another user's account"
+            redirect_to users_path
         end
     end
 
